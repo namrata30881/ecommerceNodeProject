@@ -9,7 +9,7 @@ var app = express();
 
 app.use(express.static("assets"));
 
-mongoose.connect("mongodb://localhost:27017/ecommerce");
+mongoose.connect("mongodb+srv://namrata30881:30799nama@cluster0.ihe4w.mongodb.net/ecommerce");
 const db = mongoose.connection;
 db.on("error", error => console.log(error));
 db.on("open", () => console.log("Connection Establised"));
@@ -41,8 +41,9 @@ app.use("/admin", require("./routes/admin"));
 app.use("/product", require("./routes/product"));
 app.use("/order", require("./routes/order"));
 app.use("/subscription", require("./routes/subscription"));
+const  PORT = process.env.PORT || 3100;
 
 
-app.listen(8081, function () {
+app.listen(PORT, function () {
     console.log("Node Server Started");
 });  
